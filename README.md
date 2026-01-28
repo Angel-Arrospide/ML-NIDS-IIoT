@@ -17,18 +17,13 @@
     # Esto instala dependencias y registra la carpeta 'src'
     pip install -e .
     ```
-3. **Inicializar Proyecto**
-    ```bash
-    pip install --upgrade pip
-    pip install -r requirements.txt
-    ```
 
-4. **Configurar el Kernel para Jupyter**
+3. **Configurar el Kernel para Jupyter**
     ```bash
     python -m ipykernel install --user --name=ml_nids_env --display-name "Python (ML-NIDS-IIoT)"
     ```
 
-5. **Inicializar Proyecto**
+4. **Inicializar Proyecto**
     ```bash
     python3 src/config.py
     ```
