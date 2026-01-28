@@ -30,3 +30,8 @@ pip install -r requirements.txt
 ```bash
 python -m ipykernel install --user --name=ml_nids_env --display-name "Python (ML-NIDS-IIoT)"
 ```
+
+5. Crear estructura de carpetas
+```bash
+python3 src/config.py
+```
