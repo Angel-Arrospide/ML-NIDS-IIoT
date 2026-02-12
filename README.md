@@ -18,12 +18,7 @@
     pip install -e .
     ```
 
-3. **Configurar el Kernel para Jupyter**
-    ```bash
-    python -m ipykernel install --user --name=ml_nids_env --display-name "Python (ML-NIDS-IIoT)"
-    ```
-
-4. **Inicializar Proyecto**
+3. **Inicializar Proyecto**
     ```bash
     python3 src/config.py
     ```
