@@ -33,6 +33,7 @@ DATASETS = {
         "url": "mohamedamineferrag/edgeiiotset-cyber-security-dataset-of-iot-iiot",
         "raw_path": BASE_PATH / "data" / "raw" / "edge_iiot",
         "processed_path": BASE_PATH / "data" / "processed" / "edge_iiot",
+        "binary_model_path": BASE_PATH / "models" / "binary" / "edge_iiot",
     },
 }
 
@@ -59,9 +60,10 @@ def init_project_structure():
         BASE_PATH / "data" / "raw",
         BASE_PATH / "data" / "processed",
         BASE_PATH / "models",
+        BASE_PATH / "models" / "binary",
     ]
     for ds in DATASETS.values():
-        folders.extend([ds["raw_path"], ds["processed_path"]])
+        folders.extend([ds["raw_path"], ds["processed_path"], ds["binary_model_path"]])
 
     for folder in folders:
         if not folder.exists():

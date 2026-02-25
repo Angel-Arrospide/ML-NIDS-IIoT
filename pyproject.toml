@@ -21,6 +21,9 @@ dependencies = [
     "kagglehub>=0.4.1",
     "tqdm>=4.67.1",
     "numpy>=2.4.1",
+    "xgboost",
+    "lightgbm",
+    "catboost"
 ]
 
 [tool.setuptools]
