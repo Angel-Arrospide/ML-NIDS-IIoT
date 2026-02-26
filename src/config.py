@@ -1,12 +1,13 @@
 import os
 from pathlib import Path
+import sys
 from dotenv import load_dotenv, set_key
 from rich.console import Console
 from rich.panel import Panel
 from rich.theme import Theme
 
 # =============================================================================
-#  CONFIGURACIONES VISUALES
+#  VISUALS
 # =============================================================================
 custom_theme = Theme({
     "info": "cyan",
@@ -18,16 +19,11 @@ custom_theme = Theme({
 console = Console(theme=custom_theme)
 
 # =============================================================================
-#  GESTIÓN DE RUTAS (PATHLIB)
+#  PATHS Y CONFIG
 # =============================================================================
-# Definimos la raíz como el padre de la carpeta 'src'
 BASE_PATH = Path(__file__).resolve().parent.parent
 ENV_PATH = BASE_PATH / ".env"
-
-# Cargar variables de entorno
 load_dotenv(ENV_PATH)
-
-# Configuración de Datasets 
 DATASETS = {
     "edge_iiot": {
         "url": "mohamedamineferrag/edgeiiotset-cyber-security-dataset-of-iot-iiot",
@@ -38,22 +34,21 @@ DATASETS = {
 }
 
 # =============================================================================
-#  FUNCIONES
+#  FUNCTIONS
 # =============================================================================
 
 def setup_environment():
-    """Asegura que el archivo .env tenga la ruta base correcta."""
+    """Makes sure the .env file exists and updates the PROJECT_BASE_PATH variable."""
     if not ENV_PATH.exists():
         ENV_PATH.touch()
-        console.print("[warning].env no encontrado. Creando uno nuevo...[/warning]")
+        console.print("[warning].env file created[/warning]")
 
-    # Actualizar la ruta base en el .env de forma automática
     set_key(str(ENV_PATH), "PROJECT_BASE_PATH", str(BASE_PATH))
-    console.print(f"[info]Variable PROJECT_BASE_PATH sincronizada en:[/info] [path]{ENV_PATH}[/path]")
+    console.print(f"[info]Variable PROJECT_BASE_PATH synchronized in:[/info] [path]{ENV_PATH}[/path]")
 
 def init_project_structure():
-    """Crea la jerarquía de carpetas necesaria."""
-    console.print(Panel(f"[bold info]Inicializando Estructura[/bold info]\nRaíz: [path]{BASE_PATH}[/path]", expand=False))
+    """Creates the necessary folder structure for the project."""
+    console.print(Panel(f"[bold info]Init structure[/bold info]\Path: [path]{BASE_PATH}[/path]", expand=False))
     
     # Carpetas generales y específicas
     folders = [
@@ -75,4 +70,4 @@ def init_project_structure():
 if __name__ == "__main__":
     setup_environment()
     init_project_structure()
-    console.print("\n[bold success]¡Configuración completada con éxito![/bold success]\n")
+    console.print("\n[bold success]Success[/bold success]\n")

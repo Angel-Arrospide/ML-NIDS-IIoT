@@ -4,6 +4,7 @@ models/
 Notes.md
 .venv_*
 catboost_info
+.env.*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

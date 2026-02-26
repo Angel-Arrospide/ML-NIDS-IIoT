@@ -3,6 +3,8 @@
 ## Description
 `#ToDo`
 
+Look at [notebooks](notebooks/)
+
 ## Environment config
 1. **Clone repo**:
     ```bash
