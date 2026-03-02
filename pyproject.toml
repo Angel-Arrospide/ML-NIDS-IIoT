@@ -10,20 +10,22 @@ readme = "README.md"
 requires-python = ">=3.10"
 # Dependencias extraídas de tu requirements.txt
 dependencies = [
-    "rich>=14.3.1",
-    "python-dotenv>=1.2.1",
-    "pandas>=3.0.0",
-    "scikit-learn>=1.8.0",
-    "torch>=2.10.0",
-    "matplotlib>=3.10.8",
-    "seaborn>=0.13.2",
-    "ipykernel>=7.1.0",
-    "kagglehub>=0.4.1",
-    "tqdm>=4.67.1",
-    "numpy>=2.4.1",
+    "rich",
+    "python-dotenv",
+    "pandas",
+    "scikit-learn",
+    "torch,
+    "matplotlib",
+    "seaborn",
+    "ipykernel",
+    "ipywidgets",
+    "kagglehub",
+    "tqdm",
+    "numpy",
     "xgboost",
     "lightgbm",
-    "catboost"
+    "catboost",
+    "shap"
 ]
 
 [tool.setuptools]
