@@ -1,22 +1,5 @@
-import os
 from pathlib import Path
-import sys
 from dotenv import load_dotenv, set_key
-from rich.console import Console
-from rich.panel import Panel
-from rich.theme import Theme
-
-# =============================================================================
-#  VISUALS
-# =============================================================================
-custom_theme = Theme({
-    "info": "cyan",
-    "warning": "yellow",
-    "error": "bold red",
-    "success": "bold green",
-    "path": "underline blue"
-})
-console = Console(theme=custom_theme)
 
 # =============================================================================
 #  PATHS Y CONFIG
@@ -33,6 +16,8 @@ DATASETS = {
     },
 }
 
+SEED = 42
+
 # =============================================================================
 #  FUNCTIONS
 # =============================================================================
@@ -41,14 +26,14 @@ def setup_environment():
     """Makes sure the .env file exists and updates the PROJECT_BASE_PATH variable."""
     if not ENV_PATH.exists():
         ENV_PATH.touch()
-        console.print("[warning].env file created[/warning]")
+        print(".env file created")
 
     set_key(str(ENV_PATH), "PROJECT_BASE_PATH", str(BASE_PATH))
-    console.print(f"[info]Variable PROJECT_BASE_PATH synchronized in:[/info] [path]{ENV_PATH}[/path]")
+    print(f"Variable PROJECT_BASE_PATH synchronized in: {ENV_PATH}")
 
 def init_project_structure():
     """Creates the necessary folder structure for the project."""
-    console.print(Panel(f"[bold info]Init structure[/bold info]\Path: [path]{BASE_PATH}[/path]", expand=False))
+    print(f"Init structure \nPath: {BASE_PATH}")
     
     # Carpetas generales y específicas
     folders = [
@@ -63,11 +48,11 @@ def init_project_structure():
     for folder in folders:
         if not folder.exists():
             folder.mkdir(parents=True, exist_ok=True)
-            console.print(f" [green]+[/green] Creada: [path]{folder.relative_to(BASE_PATH)}[/path]")
+            print(f" + Creada: {folder.relative_to(BASE_PATH)}")
         else:
-            console.print(f" [blue]>[/blue] Existe: [path]{folder.relative_to(BASE_PATH)}[/path]")
+            print(f" > Existe: {folder.relative_to(BASE_PATH)}")
 
 if __name__ == "__main__":
     setup_environment()
     init_project_structure()
-    console.print("\n[bold success]Success[/bold success]\n")
+    print("\nSuccess\n")
