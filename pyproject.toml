@@ -8,26 +8,44 @@ version = "0.1.0"
 description = "Machine Learning for Network Intrusion Detection in IIoT"
 readme = "README.md"
 requires-python = ">=3.10"
-# Dependencias extraídas de tu requirements.txt
 dependencies = [
-    "rich",
-    "python-dotenv",
-    "pandas",
-    "scikit-learn",
-    "torch",
-    "matplotlib",
-    "seaborn",
-    "ipykernel",
-    "ipywidgets",
-    "kagglehub",
-    "tqdm",
-    "numpy",
-    "xgboost",
-    "lightgbm",
-    "catboost",
-    "shap",
-    "lazypredict",
-    "imbalanced-learn"
+    # Utilities
+    "rich>=14.0.0",
+    "python-dotenv>=1.0.0",
+    "tqdm>=4.67.0",
+
+    # Core data science — pandas 3 + numpy 2.4 compatible
+    "numpy>=2.4.0",
+    "pandas>=3.0.2",
+    "scikit-learn>=1.6.0",
+
+    # Visualisation
+    "matplotlib>=3.10.0",
+    "seaborn>=0.13.2",
+
+    # Deep learning
+    "torch>=2.0.0",
+
+    # Jupyter
+    "ipykernel>=6.29.0",
+    "ipywidgets>=8.1.0",
+
+    # Boosting (catboost excluded — incompatible with numpy>=2.0, lives in .venv_legacy)
+    "xgboost>=3.2.0",
+    "lightgbm>=4.6.0",
+
+    # Explainability
+    "shap>=0.51.0",
+
+    # AutoML / sampling
+    "lazypredict>=0.2.12",
+    "imbalanced-learn>=0.13.0",
+
+    # Data acquisition
+    "kagglehub>=0.3.0",
+
+    # Time series
+    "stumpy>=1.14.1",
 ]
 
 [tool.setuptools]

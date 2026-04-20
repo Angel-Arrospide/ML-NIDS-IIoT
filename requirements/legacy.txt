@@ -1,0 +1,37 @@
+# legacy.txt — stable pinned env for packages incompatible with numpy>=2.0
+#
+# Incompatible packages and why:
+#   catboost>=1.2.7  → requires numpy<2.0 (binary ABI mismatch)
+#   sktime>=0.29.0   → requires numpy<2.4 AND pandas<2.4
+#
+# This env does NOT install -e . to avoid pyproject.toml pulling numpy>=2.4.
+# Import src.config by adding the project root to PYTHONPATH instead:
+#   import sys; sys.path.insert(0, '/path/to/ML-NIDS-IIoT')
+#
+# Kernel name: .venv_legacy
+
+# pinned floor — highest versions compatible with both catboost and sktime
+numpy>=1.26.0,<2.0
+pandas>=2.2.0,<2.4.0
+scikit-learn>=1.6.0
+
+# the two packages that need the old stack
+catboost>=1.2.7
+sktime>=0.29.0,<0.41.0
+
+# everything else — versions that work on numpy 1.x + pandas 2.x
+rich>=14.0.0
+python-dotenv>=1.0.0
+tqdm>=4.67.0
+matplotlib>=3.10.0
+seaborn>=0.13.2
+torch>=2.0.0
+ipykernel>=6.29.0
+ipywidgets>=8.1.0
+xgboost>=2.1.0
+lightgbm>=4.6.0
+shap>=0.46.0,<0.51.0
+lazypredict>=0.2.12
+imbalanced-learn>=0.13.0
+kagglehub>=0.3.0
+stumpy>=1.14.1

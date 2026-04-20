@@ -10,9 +10,10 @@ load_dotenv(ENV_PATH)
 DATASETS = {
     "edge_iiot": {
         "url": "mohamedamineferrag/edgeiiotset-cyber-security-dataset-of-iot-iiot",
-        "raw_path": BASE_PATH / "data" / "raw" / "edge_iiot",
-        "processed_path": BASE_PATH / "data" / "processed" / "edge_iiot",
-        "binary_model_path": BASE_PATH / "models" / "binary" / "edge_iiot",
+        "raw_path": BASE_PATH / "data" / "edge_iiot" / "raw",
+        "processed_path": BASE_PATH / "data" / "edge_iiot" / "processed",
+        "bin_model_path": BASE_PATH / "models" / "edge_iiot" / "binary",
+        "15c_model_path": BASE_PATH / "models" / "edge_iiot" / "15c",
     },
 }
 
@@ -40,10 +41,10 @@ def init_project_structure():
         BASE_PATH / "data" / "raw",
         BASE_PATH / "data" / "processed",
         BASE_PATH / "models",
-        BASE_PATH / "models" / "binary",
+        BASE_PATH / "models" / "edge_iiot",
     ]
     for ds in DATASETS.values():
-        folders.extend([ds["raw_path"], ds["processed_path"], ds["binary_model_path"]])
+        folders.extend([ds["raw_path"], ds["processed_path"], ds["bin_model_path"], ds["15c_model_path"]])
 
     for folder in folders:
         if not folder.exists():
