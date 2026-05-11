@@ -7,7 +7,7 @@ name = "ml-nids-iiot"
 version = "0.1.0"
 description = "Machine Learning for Network Intrusion Detection in IIoT"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11,<3.14"
 dependencies = [
     # Utilities
     "rich>=14.0.0",
@@ -15,9 +15,10 @@ dependencies = [
     "tqdm>=4.67.0",
 
     # Core data science — pandas 3 + numpy 2.4 compatible
-    "numpy>=2.4.0",
+    "numpy>=2.4.4",
     "pandas>=3.0.2",
     "scikit-learn>=1.6.0",
+    "pyod>=2.0.0",
 
     # Visualisation
     "matplotlib>=3.10.0",
@@ -48,13 +49,18 @@ dependencies = [
     "stumpy>=1.14.1",
 ]
 
+[tool.uv]
+environments = [
+    "sys_platform == 'linux'",
+]
+
 [tool.setuptools]
 packages = ["src"]
 
 [tool.uv.sources]
-torch = { index = "pytorch-cu124" }
+torch = { index = "pytorch-cu121" }
 
-[[tool.uv.indexes]]
-name = "pytorch-cu124"
-url = "https://download.pytorch.org/whl/cu124"
+[[tool.uv.index]]
+name = "pytorch-cu121"
+url = "https://download.pytorch.org/whl/cu121"
 explicit = true
