@@ -6,6 +6,7 @@ Notes.md
 .venv_*
 catboost_info
 .env.*
+uv.lock
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
