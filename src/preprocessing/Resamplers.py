@@ -49,11 +49,8 @@ class SMOTEResampler(BaseEstimator, TransformerMixin):
 
         # Ordinal-encode categorical columns (SMOTE requires numeric input)
         cat_cols = X_train.select_dtypes(include=["object", "category"]).columns.tolist()
-        encoder  = OrdinalEncoder(handle_unknown="use_encoded_value", unknown_value=-1)
         if cat_cols:
-            X_train = X_train.copy()
-            X_train[cat_cols] = encoder.fit_transform(X_train[cat_cols])
-            print(f"  [{self.__class__.__name__}] Encoded {len(cat_cols)} categorical columns.")
+            raise ValueError(f"  [{self.__class__.__name__}] Categorical columns found: {cat_cols}. SMOTE requires numeric input.")
 
         # Build per-class oversampling strategy
         counts       = Counter(y_train_15)

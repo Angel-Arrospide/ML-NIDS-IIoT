@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.model_selection import train_test_split
+import pandas as pd
 
 from src.config import SEED
 from .constants import TARGET_BIN, TARGET_15C, TEST_SIZE
@@ -8,6 +9,25 @@ from .constants import TARGET_BIN, TARGET_15C, TEST_SIZE
 # ---------------------------------------------------------
 # Utils
 # ---------------------------------------------------------
+
+class AllTest(BaseEstimator, TransformerMixin):
+    """
+    Return the entire dataset as the test set.
+    Expects and returns a dict with keys 'train' and 'test'.
+    """
+    def __init__(self):
+        pass
+
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, X: pd.DataFrame, y=None) -> dict:
+        print(
+            f"  [{self.__class__.__name__}] "
+            f"Train: {0:,}  |  Test: {X.shape[0]:,}"
+        )
+        return {"train": pd.DataFrame(), "test": X}
+
 
 class TrainTestSplitter(BaseEstimator, TransformerMixin):
     """
@@ -106,16 +126,26 @@ class SplitExtractor(BaseEstimator, TransformerMixin):
         return self
 
     def transform(self, splits: dict, y=None) -> tuple:
+        
         train = splits["train"]
+        if not train.empty:
+            X_train = train.drop(columns=[self.target_bin, self.target_15c])
+            y_bin_train = train[self.target_bin]
+            y_15c_train = train[self.target_15c]
+        else:
+            X_train = pd.DataFrame()
+            y_bin_train = pd.Series()
+            y_15c_train = pd.Series()
+
         test  = splits["test"]
-
-        X_train = train.drop(columns=[self.target_bin, self.target_15c])
-        y_bin_train = train[self.target_bin]
-        y_15c_train = train[self.target_15c]
-
-        X_test  = test.drop(columns=[self.target_bin, self.target_15c])
-        y_bin_test = test[self.target_bin]
-        y_15c_test = test[self.target_15c]
+        if not test.empty:
+            X_test  = test.drop(columns=[self.target_bin, self.target_15c])
+            y_bin_test = test[self.target_bin]
+            y_15c_test = test[self.target_15c]
+        else:
+            X_test = pd.DataFrame()
+            y_bin_test = pd.Series()
+            y_15c_test = pd.Series()
 
         print(
             f"  [{self.__class__.__name__}] "
