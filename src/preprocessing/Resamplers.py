@@ -74,8 +74,6 @@ class SMOTEResampler(BaseEstimator, TransformerMixin):
 
         # Rebuild DataFrame and decode categorical columns back to text
         df_res = pd.DataFrame(X_res, columns=X_train.columns)
-        if cat_cols:
-            df_res[cat_cols] = encoder.inverse_transform(df_res[cat_cols])
 
         # Synchronise binary label from 15-class label
         df_res[self.target_bin] = (y_15_res != self.normal_label).astype(int)
