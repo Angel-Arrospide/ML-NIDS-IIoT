@@ -1,6 +1,6 @@
 :setup_env
-set "ENV_DIR=%~1"
-set "REQ_TARGET=%~2"
+set "ENV_DIR=.venv"
+set "REQ_TARGET=-e ."
 
 echo ======================================
 echo Setting up environment: %ENV_DIR%
@@ -25,4 +25,4 @@ if "%ENV_DIR%"==".venv_legacy" (
 
 echo Successfully configured %ENV_DIR%!
 echo.
-exit /b
+pause
