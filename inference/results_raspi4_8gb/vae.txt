@@ -1,0 +1,13 @@
+[init] Loading scaler  → /home/aam/ML-NIDS-IIoT/inference/data/VAE_num_latent4_leaky_relu_scaler.joblib
+[init] Scaler features : 43
+[init] Building VAE (latent4_leaky_relu)
+[init] Loading weights → /home/aam/ML-NIDS-IIoT/inference/data/VAE_num_latent4_leaky_relu_weights.pth
+[init] Threshold       : 0.035427
+[init] Ready.
+
+[run] Reading /home/aam/ML-NIDS-IIoT/inference/data/DL-EdgeIIoT-dataset_clean.pkl
+[run] Loaded 2,158,750 rows × 62 cols
+[run] 148113 ms total  |  0.073 ms/sample
+[run] Score distribution — p50=0.0000  p95=0.9948  p99=1.0000
+[run] Anomalies: 376,440 / 2,036,154 (18.49%)
+[out] Saved → /home/aam/ML-NIDS-IIoT/inference/data/DL-EdgeIIoT-dataset_clean_scored.csv

@@ -14,6 +14,7 @@ DATASETS = {
         "processed_path": BASE_PATH / "data" / "edge_iiot" / "processed",
         "bin_model_path": BASE_PATH / "models" / "edge_iiot" / "binary",
         "15c_model_path": BASE_PATH / "models" / "edge_iiot" / "15c",
+        "other": BASE_PATH / "models" / "edge_iiot",
     },
 }
 

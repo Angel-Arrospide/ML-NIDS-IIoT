@@ -1,0 +1,14 @@
+[init] Loading scaler   -> /home/aam/ML-NIDS-IIoT/inference/data/SWS_num_scaler.pkl
+[init] Scaler features  : None
+[init] Loading baseline -> /home/aam/ML-NIDS-IIoT/inference/data/SWS_num_baseline.joblib
+[init] Config           : W=520, step=520, agg=mean, norm=L2, baseline=global
+[init] Threshold        : 0.594619
+[init] Ready.
+
+[run] Reading /home/aam/ML-NIDS-IIoT/inference/data/DL-EdgeIIoT-dataset_clean.pkl
+[run] Loaded 2,158,750 rows x 62 cols
+[run] Scaled shape      : (2036154, 43)
+[run] 664 ms total  |  0.170 ms/window  |  3,065,136 packets/s
+[run] Score distribution — p50=3846301.5000  p95=293538464.0000  p99=588580608.0000
+[run] Anomalies: 2,863 / 3,915 windows (73.13%)
+[out] Saved → /home/aam/ML-NIDS-IIoT/inference/data/DL-EdgeIIoT-dataset_clean_scored.csv
